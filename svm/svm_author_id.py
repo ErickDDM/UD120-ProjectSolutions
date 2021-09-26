@@ -26,7 +26,11 @@ features_train, features_test, labels_train, labels_test = preprocess()
 ### your code goes here ###
 clf = SVC(kernel='linear')
 
-# Fit and time
+# Only use 1% of the original training data
+features_train = features_train[:int(len(features_train)/100)]
+labels_train = labels_train[:int(len(labels_train)/100)]
+
+# Fit and Time
 t0 = time()
 clf.fit(features_train, labels_train)
 print(f'Train time: {time() - t0:.2f}')
@@ -36,17 +40,5 @@ t0 = time()
 preds = clf.predict(features_test)
 print(f'Predict time: {time() - t0:.2f}')
 print(f'Accuracy: {accuracy_score(preds, labels_test):.2f}')
-
-#########################################################
-
-#########################################################
-'''
-You'll be Provided similar code in the Quiz
-But the Code provided in Quiz has an Indexing issue
-The Code Below solves that issue, So use this one
-'''
-
-# features_train = features_train[:int(len(features_train)/100)]
-# labels_train = labels_train[:int(len(labels_train)/100)]
 
 #########################################################
