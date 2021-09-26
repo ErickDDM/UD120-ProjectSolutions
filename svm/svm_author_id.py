@@ -9,6 +9,7 @@
 """
     
 import sys
+import numpy as np
 from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
@@ -35,8 +36,8 @@ preds = clf.predict(features_test)
 print(f'Predict time: {time() - t0:.2f}')
 print(f'Accuracy: {accuracy_score(preds, labels_test):.2f}')
 
-# Find predictions for specified test observations:
-for num_obs in [10,26,50]:
-    print(f'Prediction for observation number {num_obs}: {preds[num_obs]}')
-
+# Find number of predictions of each class
+values, counts = np.unique(preds, return_counts=True)
+for val, count in zip(values, counts):
+    print(f"Class {val} predicted for {count} test observations.")
 #########################################################nn
