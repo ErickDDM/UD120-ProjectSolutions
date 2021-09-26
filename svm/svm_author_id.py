@@ -23,25 +23,17 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 
 #########################################################
-# Only use 1% of the original training data
-features_train = features_train[:int(len(features_train)/100)]
-labels_train = labels_train[:int(len(labels_train)/100)]
+clf = SVC(kernel='rbf', gamma='auto', C=10000)
 
-for C in [10,100,1000,10000]:
-    # Sklearn default parameter values changed in a newer version, so we need to use 
-    # gamma=auto to get the results expected in the quizes
-    print(f'\tUsing C = {C}')
-    clf = SVC(kernel='rbf', gamma='auto', C=C)
+# Fit and Time
+t0 = time()
+clf.fit(features_train, labels_train)
+print(f'Train time: {time() - t0:.2f}')
 
-    # Fit and Time
-    t0 = time()
-    clf.fit(features_train, labels_train)
-    print(f'Train time: {time() - t0:.2f}')
-
-    # Predict and time
-    t0 = time()
-    preds = clf.predict(features_test)
-    print(f'Predict time: {time() - t0:.2f}')
-    print(f'Accuracy: {accuracy_score(preds, labels_test):.2f}')
+# Predict and time
+t0 = time()
+preds = clf.predict(features_test)
+print(f'Predict time: {time() - t0:.2f}')
+print(f'Accuracy: {accuracy_score(preds, labels_test):.2f}')
 
 #########################################################
