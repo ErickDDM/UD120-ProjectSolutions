@@ -21,7 +21,6 @@ from sklearn.metrics import accuracy_score
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
-
 #########################################################
 clf = SVC(kernel='rbf', gamma='auto', C=10000)
 
@@ -36,4 +35,8 @@ preds = clf.predict(features_test)
 print(f'Predict time: {time() - t0:.2f}')
 print(f'Accuracy: {accuracy_score(preds, labels_test):.2f}')
 
-#########################################################
+# Find predictions for specified test observations:
+for num_obs in [10,26,50]:
+    print(f'Prediction for observation number {num_obs}: {preds[num_obs]}')
+
+#########################################################nn
