@@ -23,8 +23,9 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 
 #########################################################
-### your code goes here ###
-clf = SVC(kernel='linear')
+# Sklearn default parameter values changed in a newer version, so we need to use 
+# gamma=auto to get the results expected in the quizes
+clf = SVC(kernel='rbf', gamma='auto')
 
 # Only use 1% of the original training data
 features_train = features_train[:int(len(features_train)/100)]
