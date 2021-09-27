@@ -21,6 +21,8 @@ from sklearn.metrics import accuracy_score
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
+print(f"Number of features: {features_train.shape[1]}")
+
 clf = DecisionTreeClassifier(min_samples_split=40)
 clf.fit(features_train, labels_train)
 preds = clf.predict(features_test)
