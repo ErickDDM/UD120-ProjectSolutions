@@ -3,6 +3,8 @@
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.metrics import accuracy_score
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
@@ -26,10 +28,31 @@ plt.xlabel("bumpiness")
 plt.ylabel("grade")
 plt.show()
 ################################################################################
+# We try adaboost with a simple manual implementation of 'grid search' (we haven't
+# seen this technique in the course yet, so that's why we make it this way)
+num_estimators = [20, 25, 30, 35, 40]
+learning_rates = [0.3, 0.4, 0.5, 0.6, 0.7]
 
+best_accuracy = 0
+best_num_estimators = None
+best_learning_rate = None
 
-### your code here!  name your classifier object clf if you want the 
-### visualization code (prettyPicture) to show you the decision boundary
+for n_estimator in num_estimators:
+    for learning_rate in learning_rates:
+        print(f'Training using {n_estimator} estimators and learning rate of {learning_rate:.2f}')
+        clf = AdaBoostClassifier(n_estimators=n_estimator, learning_rate=learning_rate)
+        clf.fit(features_train, labels_train)
+        preds = clf.predict(features_test)
+        accuracy = accuracy_score(labels_test, preds)
+        print(f"Accuracy: {accuracy:.3f}\n")
+
+        if accuracy > best_accuracy:
+            best_accuracy = accuracy
+            best_num_estimators = n_estimator
+            best_learning_rate = learning_rate
+
+print(f'Best model accuracy: {best_accuracy}')
+print(f'Best parameters: n_estimators={best_num_estimators}, learning_rate={best_learning_rate}.')
 
 
 
