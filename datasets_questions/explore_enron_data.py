@@ -17,5 +17,11 @@
 
 import joblib
 
+####################### WATCH OUT WINDOWS USERS !! ######################
+# Pickle's load operation fails because the pkl files end with 'CRLF' (which
+# is nice for UNIX based systems like linux or MacOS, but not for Windows)
+# In order to be able to use these .pkl files the CRLF endings have to be changed
+# to LF. There are many ways to to this. The pkl files in this repo have already
+# been converted for you using VS code.
 enron_data = joblib.load(open("../final_project/final_project_dataset.pkl", "rb"))
 
