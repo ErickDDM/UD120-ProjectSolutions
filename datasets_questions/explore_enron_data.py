@@ -62,3 +62,7 @@ for features in enron_data.values():
     if features['email_address'] != 'NaN':
         n += 1
 print(f"Number of persons with non null email: {n}")
+
+# Number and percentage of people with null total payments
+no_pay_list = [person for person, values in enron_data.items() if values['total_payments']=='NaN']
+print(f'Number of people with missing payment information: {len(no_pay_list)}. Percentage: {100*len(no_pay_list)/len(enron_data):.2f}')
