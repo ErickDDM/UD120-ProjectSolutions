@@ -40,3 +40,6 @@ print(f"Stock value of James Prentice: {enron_data['PRENTICE JAMES']['total_stoc
 
 # Emails from Wesley Colwell to POIs:
 print(f"Emails from Wesiley Colwell to POIs: {enron_data['COLWELL WESLEY']['from_this_person_to_poi']}")
+
+# Stock Options Values for Jeffrey K Skilling
+print(f"Stock Options Values for Jeffrey K Skilling: {enron_data['SKILLING JEFFREY K']['exercised_stock_options']}")
