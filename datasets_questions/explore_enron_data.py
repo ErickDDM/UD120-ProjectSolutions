@@ -26,3 +26,6 @@ import joblib
 enron_data = joblib.load(open("../final_project/final_project_dataset.pkl", "rb"))
 
 print(f"Number of people in dataset: {len(enron_data)}")
+
+# Pick first observation to see how many features we have
+print(f"Number of features: {len(enron_data['METTS MARK'])}")
