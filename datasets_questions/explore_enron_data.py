@@ -37,3 +37,6 @@ print(f'Number of POIs: {len(poi_list)}')
 
 # Stock value of James Prentice
 print(f"Stock value of James Prentice: {enron_data['PRENTICE JAMES']['total_stock_value']}")
+
+# Emails from Wesley Colwell to POIs:
+print(f"Emails from Wesiley Colwell to POIs: {enron_data['COLWELL WESLEY']['from_this_person_to_poi']}")
