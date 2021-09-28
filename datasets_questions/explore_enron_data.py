@@ -16,6 +16,7 @@
 """
 
 import joblib
+import pandas as pd
 
 ####################### WATCH OUT WINDOWS USERS !! ######################
 # Pickle's load operation fails because the pkl files end with 'CRLF' (which
@@ -33,3 +34,6 @@ print(f"Number of features: {len(enron_data['METTS MARK'])}")
 # Count number of POI's
 poi_list = [person for person, values in enron_data.items() if values['poi']==1]
 print(f'Number of POIs: {len(poi_list)}')
+
+# Stock value of James Prentice
+print(f"Stock value of James Prentice: {enron_data['PRENTICE JAMES']['total_stock_value']}")
