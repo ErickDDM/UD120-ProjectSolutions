@@ -43,3 +43,8 @@ print(f"Emails from Wesiley Colwell to POIs: {enron_data['COLWELL WESLEY']['from
 
 # Stock Options Values for Jeffrey K Skilling
 print(f"Stock Options Values for Jeffrey K Skilling: {enron_data['SKILLING JEFFREY K']['exercised_stock_options']}")
+
+# Total many amounts that the CEO, Chairman and CFO took home:
+print(f"Jeffrey Skilling (CEO) took {enron_data['SKILLING JEFFREY K']['total_payments']} dollars home.") 
+print(f"Kenneth Lay (Chairman) took {enron_data['LAY KENNETH L']['total_payments']} dollars home.") 
+print(f"Andrew Fastow (CFO) took {enron_data['FASTOW ANDREW S']['total_payments']} dollars home.") 
