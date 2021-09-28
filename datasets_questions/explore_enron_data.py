@@ -29,3 +29,7 @@ print(f"Number of people in dataset: {len(enron_data)}")
 
 # Pick first observation to see how many features we have
 print(f"Number of features: {len(enron_data['METTS MARK'])}")
+
+# Count number of POI's
+poi_list = [person for person, values in enron_data.items() if values['poi']==1]
+print(f'Number of POIs: {len(poi_list)}')
