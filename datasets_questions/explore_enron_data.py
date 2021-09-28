@@ -25,3 +25,4 @@ import joblib
 # been converted for you using VS code.
 enron_data = joblib.load(open("../final_project/final_project_dataset.pkl", "rb"))
 
+print(f"Number of people in dataset: {len(enron_data)}")
