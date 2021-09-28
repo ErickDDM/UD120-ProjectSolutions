@@ -48,3 +48,17 @@ print(f"Stock Options Values for Jeffrey K Skilling: {enron_data['SKILLING JEFFR
 print(f"Jeffrey Skilling (CEO) took {enron_data['SKILLING JEFFREY K']['total_payments']} dollars home.") 
 print(f"Kenneth Lay (Chairman) took {enron_data['LAY KENNETH L']['total_payments']} dollars home.") 
 print(f"Andrew Fastow (CFO) took {enron_data['FASTOW ANDREW S']['total_payments']} dollars home.") 
+
+# Number of persons with a non null salary
+n = 0
+for features in enron_data.values():
+    if features['salary'] != 'NaN':
+        n += 1
+print(f"Number of persons with non null salary: {n}")
+
+# Number of persons with non null email
+n = 0
+for features in enron_data.values():
+    if features['email_address'] != 'NaN':
+        n += 1
+print(f"Number of persons with non null email: {n}")
