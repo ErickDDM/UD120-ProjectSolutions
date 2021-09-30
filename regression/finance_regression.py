@@ -17,6 +17,7 @@ import sys
 import joblib
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
+from sklearn.linear_model import LinearRegression
 dictionary = joblib.load( open("../final_project/final_project_dataset_modified.pkl", "rb") )
 
 
@@ -34,10 +35,13 @@ test_color = "r"
 
 
 
-### Your regression goes here!
-### Please name it reg, so that the plotting code below picks it up and 
-### plots it correctly. Don't forget to change the test_color above from "b" to
-### "r" to differentiate training points from test points.
+# Fit regression
+reg = LinearRegression()
+reg.fit(feature_train, target_train)
+
+# Print slope and bias
+print(f"Slope: {reg.coef_[0]}")
+print(f"Intercept: {reg.intercept_}")
 
 
 
