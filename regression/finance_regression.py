@@ -23,7 +23,7 @@ dictionary = joblib.load( open("../final_project/final_project_dataset_modified.
 
 ### list the features you want to look at--first item in the 
 ### list will be the "target" feature
-features_list = ["bonus", "long_term_incentive"]
+features_list = ["bonus", "salary"]
 data = featureFormat( dictionary, features_list, remove_any_zeroes=True, sort_keys = '../tools/python2_lesson06_keys.pkl')
 target, features = targetFeatureSplit( data )
 
@@ -70,6 +70,12 @@ try:
     plt.plot( feature_test, reg.predict(feature_test) )
 except NameError:
     pass
+
+# Oulier experiment: train on test and test on train (there is an outlier in the original training set)
+reg.fit(feature_test, target_test)
+plt.plot(feature_train, reg.predict(feature_train), color="b")
+print(f"New line slope: {reg.coef_[0]}")
+
 plt.xlabel(features_list[1])
 plt.ylabel(features_list[0])
 plt.legend()
