@@ -47,9 +47,8 @@ print(f"Intercept: {reg.intercept_}")
 print(f"Train R-squared: {reg.score(feature_train, target_train):.3f}")
 
 
-
-
-
+# Print test score
+print(f"Test R-squared: {reg.score(feature_test, target_test):.3f}")
 
 
 ### draw the scatterplot, with color-coded training and testing points
