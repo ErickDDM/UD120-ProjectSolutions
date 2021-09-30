@@ -43,6 +43,8 @@ reg.fit(feature_train, target_train)
 print(f"Slope: {reg.coef_[0]}")
 print(f"Intercept: {reg.intercept_}")
 
+# Print training score
+print(f"Train R-squared: {reg.score(feature_train, target_train):.3f}")
 
 
 
