@@ -65,6 +65,13 @@ if len(cleaned_data) > 0:
     ### refit your cleaned data!
     try:
         reg.fit(ages, net_worths)
+
+        # Print slope without outliers
+        print(f"Regression slope without outliers: {float(reg.coef_[0]):.3f}")
+
+        # Print score without outliers
+        print(f"Test R-squared without outliers:{reg.score(ages_test, net_worths_test):.3f}")
+
         plt.plot(ages, reg.predict(ages), color="blue")
     except NameError:
         print("You don't seem to have regression imported/created,")
