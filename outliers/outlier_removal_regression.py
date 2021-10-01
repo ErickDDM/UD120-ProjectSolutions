@@ -29,7 +29,7 @@ reg = LinearRegression()
 reg.fit(ages_train, net_worths_train)
 
 #  Print slope
-print(f"Regression slope: {reg.coef_[0]}")
+print(f"Regression slope: {float(reg.coef_[0]):.3f}")
 
 try:
     plt.plot(ages, reg.predict(ages), color="blue")
