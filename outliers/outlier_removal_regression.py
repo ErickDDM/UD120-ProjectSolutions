@@ -31,6 +31,8 @@ reg.fit(ages_train, net_worths_train)
 #  Print slope
 print(f"Regression slope: {float(reg.coef_[0]):.3f}")
 
+# Print Test R squared
+print(f"Test R-squared:{reg.score(ages_test, net_worths_test):.3f}")
 try:
     plt.plot(ages, reg.predict(ages), color="blue")
 except NameError:
