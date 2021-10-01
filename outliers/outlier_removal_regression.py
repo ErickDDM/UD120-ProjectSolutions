@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import joblib
 
 from outlier_cleaner import outlierCleaner
+from sklearn.linear_model import LinearRegression
 
 
 ### load up some practice data with outliers in it
@@ -23,17 +24,12 @@ net_worths = numpy.reshape( numpy.array(net_worths), (len(net_worths), 1))
 from sklearn.model_selection import train_test_split
 ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(ages, net_worths, test_size=0.1, random_state=42)
 
-### fill in a regression here!  Name the regression object reg so that
-### the plotting code below works, and you can see what your regression looks like
+# Create and fit regression
+reg = LinearRegression()
+reg.fit(ages_train, net_worths_train)
 
-
-
-
-
-
-
-
-
+#  Print slope
+print(f"Regression slope: {reg.coef_[0]}")
 
 try:
     plt.plot(ages, reg.predict(ages), color="blue")
